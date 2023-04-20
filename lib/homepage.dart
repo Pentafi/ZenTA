@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:zenta/bottomNavbar.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:zenta/carouselDots.dart';
 import 'constant.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 final List<String> imgList = [
   'https://th.bing.com/th/id/OIP.beRWaVOKy-KXFJFfGc1EmAHaHa?pid=ImgDet&w=553&h=553&rs=1',
-  'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
-  'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
-  'https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=89719a0d55dd05e2deae4120227e6efc&auto=format&fit=crop&w=1953&q=80',
-  'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
-  'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
+  'https://th.bing.com/th/id/R.1a994928afa7866db6782dae8060708f?rik=CmK1xi3XIR64EQ&riu=http%3a%2f%2fhdfreewallpaper.net%2fwp-content%2fuploads%2f2015%2f09%2fmotivation-motivational-quotes-poster-wallpaper-free-hd-for-desktop.jpg&ehk=y4xS0fJstKQXAc8yWtX2LuYVSIj5UZsxyiYMM64%2boVM%3d&risl=&pid=ImgRaw&r=0',
+  'https://i.pinimg.com/736x/c5/a6/17/c5a61784338e76777ae6817a51fc033e.jpg',
+  'https://motivationparlour.files.wordpress.com/2019/03/dont-give-up.jpg?w=685?w=300',
+  'https://i.pinimg.com/originals/69/59/c0/6959c0b257b813d2c1c7062983d834d8.jpg',
+  'https://i.pinimg.com/originals/4b/17/08/4b1708d55ff11142d1f1127aab572515.jpg'
 ];
 
 class MyHomePage extends StatefulWidget {
@@ -27,8 +27,32 @@ class _MyHomePageState extends State<MyHomePage> {
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
 
-    return SingleChildScrollView(
-      child: SizedBox(
+    return Scaffold(
+      bottomNavigationBar: GNav(
+        activeColor: tWhite,
+        tabBackgroundGradient:
+            const LinearGradient(colors: [tgradbut11, tgradbut22]),
+        padding: EdgeInsets.all(16),
+        tabs: const [
+          GButton(
+            icon: Icons.home,
+            text: 'Home',
+          ),
+          GButton(
+            icon: Icons.music_note,
+            text: 'Music',
+          ),
+          GButton(
+            icon: Icons.calendar_month,
+            text: 'Meditate',
+          ),
+          GButton(
+            icon: Icons.night_shelter,
+            text: 'Zen',
+          ),
+        ],
+      ),
+      body: SizedBox(
         width: double.infinity,
         child: Container(
           width: double.infinity,
@@ -40,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               Container(
                 padding: EdgeInsets.fromLTRB(
-                    35.19 * fem, 80 * fem, 18.35 * fem, 21 * fem),
+                    35.19 * fem, 50 * fem, 18.35 * fem, 21 * fem),
                 width: double.infinity,
                 decoration: BoxDecoration(
                   gradient:
@@ -64,12 +88,24 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Padding(
                         padding: const EdgeInsets.only(right: 185),
                         child: const Text(
-                          "Todays Quote!",
+                          "Todays Quote",
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w400,
                             color: tWhite,
+                            shadows: <Shadow>[
+                              Shadow(
+                                offset: Offset(10.0, 10.0),
+                                blurRadius: 3.0,
+                                color: Color.fromARGB(25, 100, 100, 100),
+                              ),
+                              Shadow(
+                                offset: Offset(10.0, 10.0),
+                                blurRadius: 8.0,
+                                color: Color.fromARGB(50, 0, 0, 0),
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -79,77 +115,90 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 30, right: 210),
+                padding: const EdgeInsets.only(top: 20, right: 210),
                 child: const Text(
                   "Courses",
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w600,
                     color: tBlack,
+                    shadows: <Shadow>[
+                      Shadow(
+                        offset: Offset(10.0, 10.0),
+                        blurRadius: 3.0,
+                        color: Color.fromARGB(25, 100, 100, 100),
+                      ),
+                      Shadow(
+                        offset: Offset(10.0, 10.0),
+                        blurRadius: 20.0,
+                        color: Color.fromARGB(100, 10, 50, 10),
+                      ),
+                    ],
                   ),
                 ),
               ),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 15, left: 15),
-                    child: Container(
-                      height: 100,
-                      width: 100,
-                      color: tmainBlue,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 15, left: 15),
-                    child: Container(
-                      height: 100,
-                      width: 100,
-                      color: tmainBlue,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 15, left: 15),
-                    child: Container(
-                      height: 100,
-                      width: 100,
-                      color: tmainBlue,
-                    ),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 15, left: 15),
+              SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Container(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 5, top: 20),
                         child: Container(
                           height: 100,
-                          width: 100,
-                          color: tmainBlue,
+                          width: 320,
+                          color: tBlack,
+                          child: new Image.asset(
+                            'assets/quotes/qoute1.png',
+                            fit: BoxFit.fill,
+                          ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 15, left: 15),
+                    ),
+                    Container(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 5, top: 20),
                         child: Container(
                           height: 100,
-                          width: 100,
-                          color: tmainBlue,
+                          width: 320,
+                          color: tBlack,
+                          child: new Image.asset(
+                            'assets/quotes/2.png',
+                            fit: BoxFit.fill,
+                          ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 15, left: 15),
+                    ),
+                    Container(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 5, top: 20),
                         child: Container(
-                          height: 100,
-                          width: 100,
-                          color: tmainBlue,
+                          height: 40,
+                          width: 320,
+                          color: tBlack,
+                          child: new Image.asset(
+                            'assets/quotes/3.png',
+                            fit: BoxFit.fill,
+                          ),
                         ),
                       ),
-                    ],
-                  )
-                ],
-              ),
-              const NavBar(),
+                    ),
+                    // Container(
+                    //   child: Padding(
+                    //     padding: const EdgeInsets.only(left: 5, top: 20),
+                    //     child: Container(
+                    //       height: 100,
+                    //       width: 320,
+                    //       color: tBlack,
+                    //       child: new Image.asset(
+                    //         'assets/quotes/3.png',
+                    //         fit: BoxFit.fill,
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+                  ],
+                ),
+              )
             ],
           ),
         ),

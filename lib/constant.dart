@@ -17,6 +17,8 @@ const tgradbut2 = Color(0XFF2c67f2);
 
 const tWhiteOpacity = Color.fromRGBO(255, 255, 255, 0.898);
 const tGrayOpacity = Color.fromRGBO(233, 233, 233, 0.4);
+const tgradbut11 = Color.fromARGB(141, 98, 208, 244);
+const tgradbut22 = Color.fromARGB(139, 44, 103, 242);
 
 // ICONS
 
